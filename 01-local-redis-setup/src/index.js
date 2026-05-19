@@ -5,12 +5,13 @@ import mongoose from 'mongoose';
 const app = express();
 const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
 
+// Check Redis connection
 app.get("/redis", async (req, res) => {
   const reply = await redis.ping();
   res.json({redis: reply});
 });
 
-
+// Check MongoDB connection
 app.get('/mongo', async (req, res) => {
   const url = process.env.MONGO_URL || 'mongodb://localhost:27017/mongo_with_redis';
   if(mongoose.connection.readyState === 0) {
