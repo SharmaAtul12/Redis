@@ -1,0 +1,14 @@
+{
+  "name": "local-redis-mongo",
+  "version": "1.0.0",
+  "description": "A simple setup for local Redis and MongoDB using Docker Compose.",
+  "private": true,
+  "type":"module",
+  "scripts": {
+    "dev" : "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.3",
+    "ioredis": "^5.4.1"
+  }
+}

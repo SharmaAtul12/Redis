@@ -2,13 +2,17 @@
 
 This repository is the main workspace for learning Redis through a sequence of lectures and hands-on exercises.
 
-At the moment, the first lecture is complete and lives in the `01-local-redis-setup` folder. Future lectures will be added as separate folders in this repository.
+At the moment, two exercises are included:
+
+- `01-local-redis-setup` for running Redis and MongoDB locally with a small Node.js service
+- `02-site-banner` for storing and serving a banner message from Redis
 
 ## Current Work
 
 - Local Redis container with persistent storage
 - Local MongoDB container with persistent storage
 - Express-based Node.js app for connection checks
+- Redis-backed site banner API
 - Basic Redis and MongoDB integration examples
 
 ## Lecture 1: Local Redis Setup
@@ -20,6 +24,9 @@ The first lecture covers a local development environment for Redis and MongoDB u
 - `01-local-redis-setup/docker-compose.yml` - starts Redis and MongoDB locally
 - `01-local-redis-setup/package.json` - Node.js dependencies and scripts
 - `01-local-redis-setup/src/index.js` - Express server with Redis and MongoDB routes
+- `02-site-banner/docker-compose.yml` - starts Redis and MongoDB locally for the banner app
+- `02-site-banner/package.json` - Node.js dependencies and scripts
+- `02-site-banner/src/index.js` - Express server with Redis-backed banner routes
 
 ### Prerequisites
 
@@ -54,6 +61,13 @@ The app runs on port `3000` by default.
 
 - `GET /redis` - checks the Redis connection with a `PING`
 - `GET /mongo` - connects to MongoDB and returns the database name
+
+### Banner Routes
+
+- `POST /banner` - stores a banner message in Redis
+- `GET /banner` - returns the current banner message
+- `DELETE /banner` - removes the banner message
+- `GET /banner/exist` - checks whether the banner key exists
 
 ### Environment Variables
 
